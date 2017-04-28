@@ -64,6 +64,31 @@
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			<id>local-releases</id>
+			<name>local-releases</name>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<!-- distributionManagement url was <url>git:your-branch://git@github.com:yourgithubusername/your-github-repo.git</url> -->
+			<url>https://raw.github.com/ivans-innovation-lab/my-company-maven-repository.git/releases</url>
+		</repository>
 
-
+		<repository>
+			<id>local-snapshosts</id>
+			<name>local-snapshosts</name>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<!-- distributionManagement url was <url>git:your-branch://git@github.com:yourgithubusername/your-github-repo.git</url> -->
+			<url>https://raw.github.com/ivans-innovation-lab/my-company-maven-repository.git/snapshosts</url>
+		</repository>
+	</repositories>
 </project>

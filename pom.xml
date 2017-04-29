@@ -6,12 +6,12 @@
 	<packaging>jar</packaging>
 	<name>my company blog domain</name>
 	<description>Blog project domain - Command side</description>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<parent>
 		<groupId>com.idugalic</groupId>
 		<artifactId>my-company-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath /> 
 	</parent>
 	
 	<scm>
@@ -45,13 +45,6 @@
 	</dependencies>
 
 	<build>
-		<extensions>
-			<extension>
-				<groupId>ar.com.synergian</groupId>
-				<artifactId>wagon-git</artifactId>
-				<version>0.2.5</version>
-			</extension>
-		</extensions>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -71,44 +64,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-snapshots</id>
-			<url>http://repo.spring.io/libs-snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>synergian-repo</id>
-			<url>https://raw.github.com/synergian/wagon-git/releases</url>
-		</pluginRepository>
-	</pluginRepositories>
-	<repositories>
-		<repository>
-			<id>local-releases</id>
-			<name>local-releases</name>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<!-- distributionManagement url was <url>git:your-branch://git@github.com:yourgithubusername/your-github-repo.git</url> -->
-			<url>https://raw.github.com/ivans-innovation-lab/my-company-maven-repository.git/releases</url>
-		</repository>
 
-		<repository>
-			<id>local-snapshosts</id>
-			<name>local-snapshosts</name>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<!-- distributionManagement url was <url>git:your-branch://git@github.com:yourgithubusername/your-github-repo.git</url> -->
-			<url>https://raw.github.com/ivans-innovation-lab/my-company-maven-repository.git/snapshosts</url>
-		</repository>
-	</repositories>
+
 </project>

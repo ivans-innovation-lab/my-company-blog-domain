@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>my-company-blog-domain</artifactId>
@@ -13,7 +14,7 @@
 		<artifactId>my-company-parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	
+
 	<scm>
 		<connection>scm:git:https://github.com/ivans-innovation-lab/my-company-blog-domain.git</connection>
 		<developerConnection>scm:git:https://github.com/ivans-innovation-lab/my-company-blog-domain.git</developerConnection>
@@ -43,6 +44,40 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 	</dependencies>
+	<repositories>
+		<repository>
+			<id>artifactoryreleases</id>
+			<name>artifactory-local-releases</name>
+			<url>http://artifactory:8081/artifactory/libs-release-local</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>artifactorysnapshots</id>
+			<name>artifactory-local-snapshots</name>
+			<url>http://artifactory:8081/artifactory/libs-snapshot-local</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>idugalic-releases</id>
+			<name>idugalic-releases</name>
+			<url>http://maven.idugalic.pro/artifactory/local-repository</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>idugalic-snapshots</id>
+			<name>idugalic-snapshots</name>
+			<url>http://maven.idugalic.pro/artifactory/local-repository</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>

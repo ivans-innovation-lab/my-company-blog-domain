@@ -46,22 +46,6 @@
 	</dependencies>
 	<repositories>
 		<repository>
-			<id>artifactoryreleases</id>
-			<name>artifactory-local-releases</name>
-			<url>http://artifactory:8081/artifactory/libs-release-local</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>artifactorysnapshots</id>
-			<name>artifactory-local-snapshots</name>
-			<url>http://artifactory:8081/artifactory/libs-snapshot-local</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
 			<id>idugalic-releases</id>
 			<name>idugalic-releases</name>
 			<url>http://maven.idugalic.pro/artifactory/local-repository</url>

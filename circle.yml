@@ -1,10 +1,10 @@
 dependencies:
   override:
-    - mvn install -DskipTests
+    - mvn install -s .circleci.settings.xml -DskipTests
 
 test:
   override:
-    - mvn test
+    - mvn -s .circleci.settings.xml test
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;

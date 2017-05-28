@@ -13,4 +13,22 @@
 			<password>${env.MAVEN_PASSWORD}</password>
 		</server>
 	</servers>
+	<repositories>
+		<repository>
+			<id>idugalic-releases</id>
+			<name>idugalic-releases</name>
+			<url>http://maven.idugalic.pro/artifactory/local-repository</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>idugalic-snapshots</id>
+			<name>idugalic-snapshots</name>
+			<url>http://maven.idugalic.pro/artifactory/local-repository</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 </settings>

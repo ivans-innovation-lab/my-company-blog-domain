@@ -13,4 +13,4 @@ deployment:
   main:
     branch: master
     commands:
-      - mvn -DskipTests deploy
+      - mvn -s .circleci.settings.xml -DskipTests deploy -P idugalic-cloud

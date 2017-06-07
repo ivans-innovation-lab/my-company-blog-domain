@@ -9,6 +9,6 @@ Make sure that you have this libraries installed in your local maven repsoitory:
  - [my-company-common](https://github.com/ivans-innovation-lab/my-company-common)
 
 ```bash
-$ cd my-company-blog-domain-microservice
+$ cd my-company-blog-domain
 $ ./mvnw clean install
 ```

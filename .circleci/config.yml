@@ -1,0 +1,69 @@
+defaults: &defaults
+  working_directory: /home/circleci/my-company-blog-domain
+  docker:
+    - image: circleci/openjdk:8-jdk-browsers
+    
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+
+      - checkout
+
+      - restore_cache:
+          key: my-company-blog-domain-{{ checksum "pom.xml" }}
+
+      - run: mvn -s .circleci/maven.settings.xml install -P idugalic-cloud
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: my-company-blog-domain-{{ checksum "pom.xml" }}
+      
+      - run: |
+          mkdir -p junit/
+          find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} junit/ \;
+          
+      - store_test_results:
+          path: junit/
+          
+      - run: |
+          mkdir -p artifacts/
+          find . -type f -regex ".*/target/.*jar" -exec cp {} artifacts/ \;
+     
+      - store_artifacts:
+          path: artifacts/
+          
+      - persist_to_workspace:
+          root: artifacts/
+          paths:
+            - .
+ 
+  deploy:
+    <<: *defaults
+    steps:
+    
+      - checkout
+      
+      - attach_workspace:
+          at: workspace/
+
+      - restore_cache:
+          key: my-company-blog-domain-{{ checksum "pom.xml" }}
+          
+      - run: mvn -s .circleci/maven.settings.xml -DskipTests deploy -P idugalic-cloud
+
+
+workflows:
+  version: 2
+  my-company-blog-domain-workflow:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      

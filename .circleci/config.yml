@@ -21,13 +21,13 @@ jobs:
             - ~/.m2
           key: my-company-blog-domain-{{ checksum "pom.xml" }}
       
-      - run: | 
-          sudo mkdir -p /junit
+      - run: |
+          sudo mkdir -p $CIRCLE_TEST_REPORTS/junit/
           find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
           
           
       - store_test_results:
-          path: /junit/
+          path: $CIRCLE_TEST_REPORTS/junit/
           
       - run: |
           mkdir -p artifacts/

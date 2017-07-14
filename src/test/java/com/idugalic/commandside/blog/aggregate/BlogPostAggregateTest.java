@@ -42,7 +42,7 @@ public class BlogPostAggregateTest {
     @Test
     public void createBlogPostTest() throws Exception {
         CreateBlogPostCommand command = new CreateBlogPostCommand(auditEntry, "title", "rowContent", "publicSlug", Boolean.TRUE, Boolean.FALSE, future.getTime(), BlogPostCategory.ENGINEERING, WHO);
-        fixture.given().when(command).expectEvents(new BlogPostCreatedEvent(command.getId(), command.getAuditEntry(), command.getTitle(), command.getRawContent(), command
+        fixture.given().when(command).expectEvents(new BlogPostCreatedEvent("t", command.getAuditEntry(), command.getTitle(), command.getRawContent(), command
                 .getPublicSlug(), command.getDraft(), command.getBroadcast(), command.getPublishAt(), BlogPostCategory.ENGINEERING, WHO));
     }
     

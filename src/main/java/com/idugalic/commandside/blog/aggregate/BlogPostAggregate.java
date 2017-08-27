@@ -25,7 +25,7 @@ import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
  *
  */
 @Aggregate
-public class BlogPostAggregate{
+class BlogPostAggregate{
 
     private static final Logger LOG = LoggerFactory.getLogger(BlogPostAggregate.class);
 

@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
--   New command `UnPublishBlogPostCommand.java`, command handler and event source handler
+-   New command `UnPublishBlogPostCommand.java`
 
 ### Changed
 

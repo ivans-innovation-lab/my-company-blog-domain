@@ -4,6 +4,9 @@ import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
 
 import java.util.Date;
 
+import com.idugalic.commandside.blog.aggregate.exception.PublishBlogPostException;
+import com.idugalic.commandside.blog.command.UnPublishBlogPostCommand;
+import com.idugalic.common.blog.event.BlogPostUnPublishedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.commandhandling.model.AggregateIdentifier;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -75,9 +78,19 @@ class BlogPostAggregate {
 		if (this.getDraft()) {
 			apply(new BlogPostPublishedEvent(id, command.getAuditEntry(), command.getPublishAt()));
 		} else {
-			apply(new BlogPostPublishErrorEvent(id, command));
+			throw new PublishBlogPostException("This BlogPostAggregate (" + this.getId() + ") is not a Draft.");
 		}
 	}
+
+	@CommandHandler
+	public void unPublishBlogPost(UnPublishBlogPostCommand command) {
+		if (!this.getDraft()) {
+			apply(new BlogPostUnPublishedEvent(id, command.getAuditEntry()));
+		} else {
+			throw new PublishBlogPostException("This BlogPostAggregate (" + this.getId() + ") is not published already.");
+		}
+	}
+
 
 	/**
 	 * This method is marked as an EventSourcingHandler and is therefore used by the
@@ -105,6 +118,11 @@ class BlogPostAggregate {
 	public void on(BlogPostPublishedEvent event) {
 		this.draft = Boolean.FALSE;
 		this.publishAt = event.getPublishAt();
+	}
+
+	@EventSourcingHandler
+	public void on(BlogPostUnPublishedEvent event) {
+		this.draft = Boolean.TRUE;
 	}
 
 	public static Logger getLog() {

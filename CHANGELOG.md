@@ -9,16 +9,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [Unreleased]: https://github.com/ivans-innovation-lab/my-company-blog-domain/compare/1.1.0...HEAD
 
-## [1.1.0][] - 2017-12-08
+## [1.1.0][] - 2017-12-10
 
 [1.1.0]: https://github.com/ivans-innovation-lab/my-company-blog-domain/compare/1.0.0...1.1.0
 
+### Added
+
+-   New command `UnPublishBlogPostCommand.java`, command handler and event source handler
 
 ### Changed
 
 -   Version upgraded to [1.1.0]
 -   Vesrion of ' my-company-common' dependency upgraded to [1.1.0]
--   `BlogPostPublishErrorEvent` is used  instead of `PublishBlogPostException`
+-   Command handler and event source handler for `UnPublishBlogPostCommand.java` added to aggregate root
 
 ## [1.0.0][] - 2017-10-15
 

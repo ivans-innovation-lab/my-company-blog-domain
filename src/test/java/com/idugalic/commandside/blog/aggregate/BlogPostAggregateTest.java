@@ -1,9 +1,12 @@
 package com.idugalic.commandside.blog.aggregate;
 
+import com.idugalic.commandside.blog.aggregate.exception.PublishBlogPostException;
 import com.idugalic.commandside.blog.command.CreateBlogPostCommand;
 import com.idugalic.commandside.blog.command.PublishBlogPostCommand;
+import com.idugalic.commandside.blog.command.UnPublishBlogPostCommand;
 import com.idugalic.common.blog.event.BlogPostCreatedEvent;
 import com.idugalic.common.blog.event.BlogPostPublishedEvent;
+import com.idugalic.common.blog.event.BlogPostUnPublishedEvent;
 import com.idugalic.common.blog.model.BlogPostCategory;
 import com.idugalic.common.model.AuditEntry;
 
@@ -65,6 +68,20 @@ public class BlogPostAggregateTest {
         PublishBlogPostCommand command = new PublishBlogPostCommand(null, auditEntry, new Date());
         fixture.given(new BlogPostCreatedEvent(command.getId(), command.getAuditEntry(), "title", "rawContent", "publicSlug", Boolean.TRUE, Boolean.TRUE, command.getPublishAt(),
                 BlogPostCategory.ENGINEERING, WHO)).when(command).expectException(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void unPublishBlogPostTest() throws Exception {
+        UnPublishBlogPostCommand command = new UnPublishBlogPostCommand("id", auditEntry);
+        fixture.given(new BlogPostCreatedEvent(command.getId(), command.getAuditEntry(), "title", "rawContent", "publicSlug", Boolean.FALSE, Boolean.TRUE, new Date(),
+                BlogPostCategory.ENGINEERING, WHO)).when(command).expectEvents(new BlogPostUnPublishedEvent("id", auditEntry));
+    }
+
+    @Test
+    public void unPublishBlogPostTestWrongDraft() throws Exception {
+        UnPublishBlogPostCommand command = new UnPublishBlogPostCommand("id", auditEntry);
+        fixture.given(new BlogPostCreatedEvent(command.getId(), command.getAuditEntry(), "title", "rawContent", "publicSlug", Boolean.TRUE, Boolean.TRUE, new Date(),
+                BlogPostCategory.ENGINEERING, WHO)).when(command).expectException(PublishBlogPostException.class);
     }
 
 }

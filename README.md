@@ -2,7 +2,13 @@
 
 This component processes commands. Commands are actions which change state in some way. The execution of these commands results in Events being generated which are persisted by Axon, and propagated out to other components (possibly on other VMs). In event-sourcing, events are the sole records in the system. They are used by the system to describe and re-build domain aggregates on demand, one event at a time.
 
-## Running instructions / Installation
+## Development
+
+This project is driven using [Maven][mvn].
+
+[mvn]: https://maven.apache.org/
+
+### Run/Install locally
  
 Make sure that you have this libraries installed in your local maven repsoitory:
 

@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
-[Unreleased]: https://github.com/ivans-innovation-lab/my-company-blog-domain/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/ivans-innovation-lab/my-company-blog-domain/compare/1.1.1...HEAD
+
+## [1.1.1][] - 2017-12-21
+
+[1.1.1]: https://github.com/ivans-innovation-lab/my-company-blog-domain/compare/1.1.0...1.1.1
+
+### Changed
+
+-   Added validation to the Publish blog post command `PublishBlogPostCommand.java`. Date must be in the future.
 
 ## [1.1.0][] - 2017-12-10
 

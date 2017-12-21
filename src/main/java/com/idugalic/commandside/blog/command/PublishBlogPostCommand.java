@@ -7,6 +7,9 @@ import java.util.Date;
 
 import org.axonframework.commandhandling.TargetAggregateIdentifier;
 
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+
 /**
  * A command for publishing a blog post.
  * 
@@ -17,6 +20,8 @@ public class PublishBlogPostCommand extends AuditableAbstractCommand {
 
     @TargetAggregateIdentifier
     private String id;
+    @Future(message = "'Publish at' date must be in the future")
+    @NotNull
     private Date publishAt;
 
     public PublishBlogPostCommand(String id, AuditEntry auditEntry, Date publishAt) {

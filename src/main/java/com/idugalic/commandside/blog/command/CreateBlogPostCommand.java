@@ -36,7 +36,7 @@ public class CreateBlogPostCommand extends AuditableAbstractCommand {
     private Boolean draft;
     @NotNull
     private Boolean broadcast;
-    @Future(message = "Publish at date must be the future")
+    @Future(message = "'Publish at' date must be in the future")
     @NotNull
     private Date publishAt;
     @NotNull

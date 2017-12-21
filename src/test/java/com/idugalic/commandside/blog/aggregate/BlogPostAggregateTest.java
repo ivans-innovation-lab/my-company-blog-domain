@@ -58,14 +58,14 @@ public class BlogPostAggregateTest {
 
     @Test
     public void publishBlogPostTest() throws Exception {
-        PublishBlogPostCommand command = new PublishBlogPostCommand("id", auditEntry, new Date());
+        PublishBlogPostCommand command = new PublishBlogPostCommand("id", auditEntry, future.getTime());
         fixture.given(new BlogPostCreatedEvent(command.getId(), command.getAuditEntry(), "title", "rawContent", "publicSlug", Boolean.TRUE, Boolean.TRUE, command.getPublishAt(),
                 BlogPostCategory.ENGINEERING, WHO)).when(command).expectEvents(new BlogPostPublishedEvent("id", auditEntry, command.getPublishAt()));
     }
     
     @Test
     public void publishBlogPostWithWrongIdTest() throws Exception {
-        PublishBlogPostCommand command = new PublishBlogPostCommand(null, auditEntry, new Date());
+        PublishBlogPostCommand command = new PublishBlogPostCommand(null, auditEntry, future.getTime());
         fixture.given(new BlogPostCreatedEvent(command.getId(), command.getAuditEntry(), "title", "rawContent", "publicSlug", Boolean.TRUE, Boolean.TRUE, command.getPublishAt(),
                 BlogPostCategory.ENGINEERING, WHO)).when(command).expectException(IllegalArgumentException.class);
     }

@@ -7,7 +7,7 @@
 	<packaging>jar</packaging>
 	<name>my company blog domain</name>
 	<description>Blog project domain - Command side</description>
-	<version>1.1.0</version>
+	<version>1.1.1</version>
 
 	<parent>
 		<groupId>com.idugalic</groupId>
